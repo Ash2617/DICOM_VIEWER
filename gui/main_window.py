@@ -3,7 +3,7 @@ from PyQt6.QtGui import QAction
 import sys, os, json
 from DICOM_VIEWER.core.dicom_reader import load_dicom_folder, load_dicom_volume
 from DICOM_VIEWER.gui.matplotlib_widget import MatplotlibWidget
-from DICOM_VIEWER.gui.dicom_v1 import Ui_MainWindow
+from DICOM_VIEWER.gui.dicom_v0_0_2 import Ui_MainWindow
 from DICOM_VIEWER.gui.mpr_viewer import MPRViewer
 from DICOM_VIEWER.config.paths import RECENT_FILES_PATH
 from DICOM_VIEWER.utils.recent_manager import load_recent_files, save_recent_files

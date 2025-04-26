@@ -9,7 +9,7 @@ class VolumeViewer(QWidget):
         super().__init__(parent_frame)
 
         self.dicom_path = dicom_path
-        self.current_iso_value = 500
+        self.current_iso_value = 400
 
         print(parent_frame, dicom_path)
         
@@ -25,15 +25,16 @@ class VolumeViewer(QWidget):
 
         self.mapper = vtk.vtkPolyDataMapper()
         self.mapper.SetInputConnection(self.surface_extractor.GetOutputPort())
+        self.mapper.ScalarVisibilityOff()  # Disable scalar visibility to avoid color mapping
 
         self.actor = vtk.vtkActor()
         self.actor.SetMapper(self.mapper)
-        self.actor.GetProperty().SetColor(0.1, 0.9, 0.1)
-        self.actor.GetProperty().SetOpacity(1.0)
+        self.actor.GetProperty().SetColor(1.0, 1.0, 1.0)
+        self.actor.GetProperty().SetOpacity(0.5)
 
         self.renderer = vtk.vtkRenderer()
         self.renderer.AddActor(self.actor)
-        self.renderer.SetBackground(0.1, 0.1, 0.1)
+        self.renderer.SetBackground(0.0, 0.0, 0.0)
 
         self.render_window = vtk.vtkRenderWindow()
         # self.render_window.AddRenderer(self.renderer)
